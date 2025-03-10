@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>Login</title>
+</head>
+<body>
+    <div id="login-container">
+        <p>Welcome. Please log in</p>
+
+        <form>
+            <label for="usernameInput">Username:</label>
+            <input type="text" id="usernameInput" placeholder="Enter your username" required /><br/>
+            <label for="passwordInput">Password:</label>
+            <input type="password" id="passwordInput" placeholder="Enter your password" required />
+            <p id="message"></p>
+            <br/><br/>
+            <a id="login-btn" href="#" onclick="verifyUser()">Log in</a>
+            <div id="loader-container"></div>
+        </form>
+    </div>
+
+    <script>
+        function verifyUser() {
+            var username = document.getElementById("usernameInput").value;
+            var password = document.getElementById("passwordInput").value;
+            
+            checkUserCreds(username, password);
+        }
+
+        function checkUserCreds(username, password) {
+            var systemUsername = "Bond";
+            var systemPassword = "007";
+
+            if (username == systemUsername && password == systemPassword) {
+                alert('Logging in...');
+                document.getElementById("message").style.color = "green";
+                document.getElementById("message").innerHTML = "Correct. Logging you in..."; 
+
+                // Creating span element which class - loader which is the css loader
+                const cssSpinner = document.createElement("span");
+                cssSpinner.classList.add("loader");
+                const loaderContainer = document.getElementById("loader-container");
+
+                loaderContainer.classList.add("show"); 
+                loaderContainer.appendChild(cssSpinner); 
+
+                // Simulating a real login process with 1s/1000ms delay
+                setTimeout(() => {
+                    window.location.href = "page.html"; 
+                }, 1000);
+            } else {
+                alert('Log in failed...');
+                document.getElementById("message").style.color = "red";
+                document.getElementById("message").innerHTML = "Username or password are incorrect";
+            }
+        }
+    </script>
+</body>
+</html>

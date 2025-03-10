@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
+    <title>Image Hover</title>
+</head>
+<body>
+    <h1 style="color: white;">Error 404</h1>
+    <h1 style="color: white;">Well...this is awkward. Not found.</h1>
+    <img id="image" src="image/d5c56c5411a3b6f4b079ef4d75354ef1.png" alt="Example Image"/>
+
+    <script>
+        var image = document.getElementById("image");
+        function scaleImage() {
+            image.classList.add('scale');
+        }
+        function resetImage() {
+            image.classList.remove('scale');
+        }
+        setInterval(function() {
+            scaleImage();  
+            setTimeout(resetImage, 500); 
+        }, 1000); 
+    </script>
+</body>
+</html>
